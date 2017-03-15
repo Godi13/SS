@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dictionary</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Dictionary() {
+      this.datastore = new Array();
+      this.add = add;
+      this.find = find;
+      this.count = count;
+      this.clear = clear;
+      this.remove = remove;
+      this.showAll = showAll;
+    }
+
+    function add(key, value) {
+      this.datastore[key] = value;
+    }
+
+    function find(key) {
+      return this.datastore[key];
+    }
+
+    function remove(key) {
+      delete this.datastore[key];
+    }
+
+    function showAll() {
+      var datakeys = Object.keys(this.datastore)
+      for (var keys in datakeys) {
+        console.log(datakeys[keys] + "-->" + this.datastore[datakeys[keys]]);
+      }
+    }
+
+    function count() {
+      return Object.keys(this.datastore).length;
+    }
+
+    function clear() {
+      var datakeys = Object.keys(this.datastore)
+      for (var keys in datakeys) {
+        delete this.datastore[datakeys[keys]];
+      }
+    }
+
+    var pbook = new Dictionary();
+    pbook.add('Addadis', 498);
+    pbook.add('Nike', 999);
+    pbook.add('NB', 654);
+    console.info('Nike' + pbook.find('Nike'));
+    pbook.showAll();
+    pbook.remove('NB');
+    console.info("=========分割线=========");
+    pbook.showAll();
+    console.warn('展现字典元素个数', pbook.count());
+    pbook.clear();
+    console.warn('展现字典元素个数', pbook.count());
+  </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Linked List</title>
+  <title>Chain</title>
 </head>
 <body>
   <script type="text/javascript">
@@ -12,7 +12,7 @@
       this.previous = null;
     }
 
-    function LList() {
+    function Chain() {
       this.head = new Node("head");
       this.find = find;
       this.findPrevious = findPrevious;
@@ -84,7 +84,7 @@
       }
     }
 
-    var cities = new LList();
+    var cities = new Chain();
     cities.insert("first", "head");
     cities.insert("second", "first");
     cities.insert("three", "second");
