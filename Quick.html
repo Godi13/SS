@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quick</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function qSort(list) {
+      if (list.length == 0) {
+        return [];
+      }
+      var pivot = list[0];
+      var lesser = [];
+      var greater = [];
+      for (var i = 1; i < list.length; i++) {
+        if (list[i] < pivot) {
+          lesser.push(list[i]);
+        } else {
+          greater.push(list[i]);
+        }
+      }
+      return qSort(lesser).concat(pivot, qSort(greater));
+    }
+
+    var data = [44,75,32,16,55,98,67,3,8];
+    console.log(qSort(data));
+  </script>
+</body>
+</html>
