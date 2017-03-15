@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Merge</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function mergeSort(arr) {
+      if (arr.length < 2) {
+        return;
+      }
+      var step = 1;
+      var left, right;
+      while (step < arr.length) {
+        left = 0;
+        right = step;
+        while (right + step <= arr.length) {
+          mergeArrays(arr, left, left + step, right, right + step);
+          left = right + step;
+          right = left + step;
+        }
+        if (right < arr.length) {
+          mergeArrays(arr, left, left + step, right, arr.length);
+        }
+        step *= 2;
+      }
+    }
+    function mergeArrays(arr, startLeft, stopLeft, startRight, stopRight) {
+      var rightArr = new Array(stopRight - startRight + 1);
+      var leftArr = new Array(stopLeft - startLeft + 1);
+      k = startRight;
+      for (var i = 0; i < (rightArr.length - 1); i++) {
+        rightArr[i] = arr[k];
+        ++k;
+      }
+      k = startLeft;
+      for (var i = 0; i < (leftArr.length - 1); i++) {
+        leftArr[i] = arr[k];
+        ++k;
+      }
+      rightArr[rightArr.length - 1] = Infinity;
+      leftArr[leftArr.length - 1] = Infinity;
+      var m = 0;
+      var n = 0;
+      for (var k = startLeft; k < stopRight; k++) {
+        if (leftArr[m] <= rightArr[n]) {
+          arr[k] = leftArr[m];
+          m++;
+        } else {
+          arr[k] = rightArr[n];
+          n++;
+        }
+      }
+    }
+
+    var arr = [23,46,19,89,32,57,8,3];
+    mergeSort(arr);
+    console.log(arr);
+  </script>
+</body>
+</html>
