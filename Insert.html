@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function CArray() {
+      this.dataStore = [1,8,3,2,4,5,9,7,6];
+      this.insertSort = insertSort;
+    }
+
+    function insertSort() {
+      var temp, inner;
+      for (var outer = 1; outer < this.dataStore.length; ++outer) {
+        temp = this.dataStore[outer];
+        inner = outer;
+        while (inner > 0 && this.dataStore[inner - 1] >= temp) {
+          this.dataStore[inner] = this.dataStore[inner - 1];
+          console.log("内部数据", this.dataStore);
+          inner--;
+        }
+        this.dataStore[inner] = temp;
+        console.log('数据', this.dataStore);
+      }
+    }
+
+    var mynums = new CArray();
+    mynums.insertSort();
+    console.log(mynums.dataStore);
+  </script>
+</body>
+</html>
